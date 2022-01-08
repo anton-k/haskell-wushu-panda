@@ -67,5 +67,31 @@ extra-deps:
 We also allow newer as there is dependency mismatch on regions of the base library in the argon2
 and our project.
 
+## Application
+
+Let's build the application bit by bit.
+
+### Obfuscation
+
+### Copy paste the result
+
+### Parse the arguments
+
+### Hide the master password input
+
+## Nix instead of stack
+
+Let's use the Nix instead of stack for a change. 
+
+## Tips and tricks
+
+As we don't know the password it's easy to misspel stuff on the init. 
+If the site wants to retype the password don't copy-paste it twice. Instead
+it's safer to go through our routine twice and generate the password with the same inputs.
+
+## Exercise
+
+* Some platforms require passwords to be no more than so many symbols.
+    Add option to generate passwords of certain size.
 
 
