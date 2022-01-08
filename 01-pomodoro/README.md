@@ -1,6 +1,10 @@
 # pomodoro timer
 
-In this chapter we will build a pomodoro timer and learn handful of tricks.
+![Pomodoro pic](https://github.com/anton-k/haskell-wushu-panda/blob/main/img/pomodoro.png)
+
+as we are wushu pandas we are happy to be always on time. and exercise regulary.
+Pomodoro technique is a key to our mastery. In this chapter we will build a pomodoro 
+timer and learn handful of tricks.
 We are going to learn how to:
 
 * init project with stack and common lines to work with the haskell project like a pro
