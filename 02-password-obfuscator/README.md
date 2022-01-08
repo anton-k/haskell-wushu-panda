@@ -34,7 +34,14 @@ We can pick up any of them. We can study the hackage to choose the algorithm we 
 Hopefully somebody already implemented that and indeed we have several options.
 Let's use library [argon2](https://hackage.haskell.org/package/argon2).
 Study the docs for the library.
-We init the project and add `aragon2` to dependencies.
+We init the project and add `argon2` to dependencies.
+
+```
+-- file hpass.cabal
+  build-depends:
+      base >=4.7 && <5
+    , argon2
+```
 
 ## Design of the application
 
