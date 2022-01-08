@@ -1,6 +1,6 @@
 # pomodoro timer
 
-![Pomodoro pic](https://github.com/anton-k/haskell-wushu-panda/blob/main/img/pomodoro.png)
+![Pomodoro pic](https://github.com/anton-k/haskell-wushu-panda/blob/main/img/pomodoro-2.png)
 
 as we are wushu pandas we are happy to be always on time. and exercise regulary.
 Pomodoro technique is a key to our mastery. In this chapter we will build a pomodoro 
