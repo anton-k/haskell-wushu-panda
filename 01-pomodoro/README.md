@@ -9,7 +9,8 @@ We are going to learn how to:
 
 * init project with stack and common lines to work with the haskell project like a pro
 * create command line utilities
-* use libraries and how to show nice progress bars
+* use libraries 
+* how to show nice progress bars
 
 The pomodoro technique is a famous productivity trick. 
 It forces you to work in small portions of time. Say for only for 20-40 minutes in one go.
