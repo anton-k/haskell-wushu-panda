@@ -1,5 +1,7 @@
 # Password obfuscator
 
+![Safe pic](https://github.com/anton-k/haskell-wushu-panda/blob/main/img/password-obfuscator.jpg)
+
 Many web sites do want to know our credentials. Hopefully they use
 obfuscation techniques to prevent stealing of the paswords and reusal of them
 on other platforms. Hopefully they do it but unfortunately some don't do that
