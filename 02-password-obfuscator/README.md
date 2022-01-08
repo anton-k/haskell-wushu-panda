@@ -18,5 +18,44 @@ Our requirements: it should be easy to
 
 ## Password obfuscation theory
 
+The main idea is to generate strong passwords out of master password and the input data.
+We never show the master password and keep it secret and use only derived passwords on sites.
+It's convenient to use the web site name as an input. This way we can generate unique 
+and strong passwords. There are several cryptographic algorithms to use for the task:
+
+* PBKDF1
+* PBKDF2
+* Argon2
+* bcrypt
+* scrypt
+* Catena, Lyra2, Makwa, or yescrypt
+
+We can pick up any of them. We can study the hackage to choose the algorithm we need.
+Hopefully somebody already implemented that and indeed we have several options.
+Let's use library [argon2](https://hackage.haskell.org/package/argon2).
+Study the docs for the library.
+We init the project and add `aragon2` to dependencies.
+
+## Design of the application
+
+We will create a CLI that asks for master password and auxilliary input
+to produce derived password. The password is going to by pasted to our buffer.
+So that we can Copy paste it in the browser window that asks for it.
+
+## Include github dependency to stack
+
+With argon2 we face the problems. As we can not use it on stack directly.
+Stack keeps it's own versions of some subset of the hackage. The rest of the libraries
+we need to specify in the `extra-deps` field of the `stack.yaml` file.
+For our task we need to add to `stack.yaml`:
+
+```yaml
+extra-deps:
+   - git: https://github.com/haskell-hvr/argon2
+     commit: cafbc6e5d998ba182d92879c3a6e7b3f5ca93fc1
+
+ allow-newer: true
+```
+
 
 

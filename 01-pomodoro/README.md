@@ -48,7 +48,7 @@ Let's create an empty project:
 ```
 
 I also like to work with cabal file and don't like hpack by default so after
-that I usually remove pack.yaml. 
+that I usually remove package.yaml. 
 
 to check that everything works we can use:
 
