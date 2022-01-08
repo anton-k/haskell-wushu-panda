@@ -5,9 +5,9 @@
 ### Introduction
 
 Welcome to the Haskell in practice series. 
-I work in Haskell domain for a while. It was a long time a bit more than a decade. 
+I have worked in Haskell domain for a while. It was a long time a bit more than a decade. 
 I think there is a gap in learning when people already read the [elephant-book](https://www.amazon.com/Learn-You-Haskell-Great-Good/dp/1593272839) 
-or some other [intermidieate course](https://www.goodreads.com/book/show/25587599-haskell-programming-from-first-principles) on Haskell 
+or some other [intermideate course](https://www.goodreads.com/book/show/25587599-haskell-programming-from-first-principles) on Haskell 
 or even the advanced [In depth book](https://www.manning.com/books/haskell-in-depth) but they don't know where to start
 or how to put the knowledge in practice. I hope to help you with that.
 
@@ -16,6 +16,12 @@ useful or just fun. The learning material is in the readme of the projects.
 Also there you can find the source code. I encourage you also to actualy retype
 the code yourself by readme tutorial to see how it works. Also it's cool to invent new ways 
 or maybe dive deeper in some topics yourself.
+
+I hope that you will get the idea that you don't need to type lots of code
+to do something cool in Haskell. As the language is such a powerfull beast. 
+Often my real world projects were under 3-4k of code. And it worked. 
+This is a power of functional programming and Haskell. I hope that it will inspire you 
+to build something great, usefull or just fun and enjoyable.
 
 ### Table of Projects
 

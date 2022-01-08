@@ -446,10 +446,10 @@ And after that we can invoke it with shortcut:
 
 ## Exercises: 
 
-* make time parse not only minutes but human readable times (hours/minutes/seconds). 
+* make timer parse not only minutes but also human readable times (hours/minutes/seconds). 
    See the library `time`. It has useful functions to parse time.
 
-* make our progress bar to show the remaining time in nice human readable format.
+* make our progress bar to show the remaining time with nice human readable format.
   Have a look at the parameter of the `ProgressBar`. It's responsible for custom displays.
 
 * make timer show the local time of expected end time in local time. We can show it like this:
