@@ -387,7 +387,8 @@ readPomodoro = execParser opts
 
 Notice how we use our main function `pomodoroArgs`. The rest is a common boilerplate
 that is easy to look up in the hackage docs. I don't know still what raccoon operator
-`<**>` means. But surprisingly we are done with the code.
+`<**>` means. But surprisingly we are done with the code. 
+This is a power of Haskell in action. We did something useful in just 60 lines of code.
 
 The last thing is to define the `app/Main.hs`:
 
@@ -401,13 +402,26 @@ main :: IO ()
 main = runPomodoro =<< readPomodoro
 ```
 
-as simple as that our app is ready to use. Let's install it to global space of the PC:
+As simple as that our app is ready to use. Let's install it to global space of the PC:
 
 ```
-stack install
-pomodoro --help
+> stack install
+
+> pomodoro --help
+pomodoro timer executes command after so many minutes
+
+Usage: pomodoro [-m|--minutes INT] [-c|--cmd SHELL-COMMAND]
+  Pomodoro timer
+
+Available options:
+  -m,--minutes INT         How many minutes to wait (default: 25)
+  -c,--cmd SHELL-COMMAND   Command to execute on exit (default: "echo \"done\"")
+  -h,--help                Show this help text
+anton@hp:~/dev/hs/haskell-wushu-panda$
+
 ```
 
+I have changed the executable name from `pomodoro-exe` to plain `pomodoro` in the `pomodoro.cabal` file.
 Let's try it out:
 
 ```

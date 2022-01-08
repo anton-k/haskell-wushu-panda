@@ -72,7 +72,9 @@ My advice to learn the Haskell is
   It's better to do something and go back to ask
   when you really need the help. Although you can find a job with those tools
   they won't make you a better programmer without application to the real code
-  and you can loose lots of time on it and be discouraged by people who seems to be know more than you.
+  and you can loose lots of time on it and be discouraged by people who seems to know more than you.
+  Don't let it discourage you. Bit by bit in small steps you will become a pro
+  or just invent a couple of cool apps with this great language.
 
 The course is for a novice who already knows what Monad, Applicative ot Typeclassopedia 
 units are but does not know how to put that knowledge in practice. 
