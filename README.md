@@ -16,7 +16,7 @@ or maybe dive deeper in some topics yourself.
 
 ### Table of Projects
 
-* Introduction to Haskell development tools
+* [Introduction to Haskell development tools](https://github.com/anton-k/haskell-wushu-panda/blob/main/00-build-tools/README.md)
 
 * Pomodoro timer
 
