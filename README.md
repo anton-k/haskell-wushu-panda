@@ -22,7 +22,7 @@ or maybe dive deeper in some topics yourself.
 
 * [Pomodoro timer](https://github.com/anton-k/haskell-wushu-panda/blob/main/01-pomodoro/README.md)
 
-* [Password obfusscation](https://github.com/anton-k/haskell-wushu-panda/blob/main/02-password-obfuscator/README.md)
+* [Password obfuscation](https://github.com/anton-k/haskell-wushu-panda/blob/main/02-password-obfuscator/README.md)
 
 ### How to learn Haskell in practice
 
