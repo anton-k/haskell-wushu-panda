@@ -213,13 +213,13 @@ It just brings named fields of the data type into the scope on the syntax `Type{
 
 So in that function we optionally print the greeting:
 
-```
+```haskell
   mapM_ putStrLn pomodoro'greet
 ```
 
 After that we count how many seconds we have and define the progress bar:
 
-```
+```haskell
   let seconds = floor pomodoro'totalTime
   pb <- newProgressBar defStyle 10 (Progress 0 seconds ())
 ```
@@ -227,13 +227,13 @@ After that we count how many seconds we have and define the progress bar:
 we wait for so many seconds. The function `replicateM_` executes the procedure
 so many times. In our case each time wwe wait for a second and increment the timer.
 
-```
+```haskell
   replicateM_ seconds (step pb)
 ```
 
 As the last step we just run the final command:
 
-```
+```haskell
   void $ system pomodoro'onExit
 ```
 
