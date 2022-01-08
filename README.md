@@ -6,14 +6,15 @@
 
 Welcome to the Haskell in practice series. 
 I work in Haskell domain for a while. It was a long time a bit more than a decade. 
-I think there is a gap in learning when people already read the elephant-book or some other 
-intermidieate course on Haskell but they don't know where to start
+I think there is a gap in learning when people already read the [elephant-book](https://www.amazon.com/Learn-You-Haskell-Great-Good/dp/1593272839) 
+or some other [intermidieate course](https://www.goodreads.com/book/show/25587599-haskell-programming-from-first-principles) on Haskell 
+or even the advanced [In depth book](https://www.manning.com/books/haskell-in-depth) but they don't know where to start
 or how to put the knowledge in practice. I hope to help you with that.
 
 The course is a sequence of tiny projects. Each one should run and do something 
 useful or just fun. The learning material is in the readme of the projects.
 Also there you can find the source code. I encourage you also to actualy retype
-the code yourself to see how it works. Also it's cool to invent new ways 
+the code yourself by readme tutorial to see how it works. Also it's cool to invent new ways 
 or maybe dive deeper in some topics yourself.
 
 ### Table of Projects
