@@ -64,5 +64,8 @@ extra-deps:
  allow-newer: true
 ```
 
+We also allow newer as there is dependency mismatch on regions of the base library in the argon2
+and our project.
+
 
 
