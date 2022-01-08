@@ -1,5 +1,7 @@
 # Haskell wushu panda
 
+![Panda pic](https://github.com/anton-k/haskell-wushu-panda/blob/main/img/main-panda-logo.jpg)
+
 ### Introduction
 
 Welcome to the Haskell in practice series. 
