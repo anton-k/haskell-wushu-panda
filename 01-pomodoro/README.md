@@ -217,6 +217,18 @@ So in that function we optionally print the greeting:
   mapM_ putStrLn pomodoro'greet
 ```
 
+Don't be shy to lookup the function on the web or study it's type in the ghci
+to know what it does. For example we can take `mapM_` and play with it:
+
+```haskell
+stack ghci
+> :t mapM_
+mapM_ :: (Foldable t, Monad m) => (a -> m b) -> t a -> m ()
+> mapM_ putStrLn (Just "Hi")
+Hi
+> mapM_ putStrLn Nothing
+```
+
 After that we count how many seconds we have and define the progress bar:
 
 ```haskell
