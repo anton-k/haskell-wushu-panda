@@ -1,12 +1,12 @@
 -- | Parse command line arguments for pomodoro
-module System.Pomodoro.Args
-    ( readPomodoro
-    ) where
+module System.Pomodoro.Args(
+  readPomodoro,
+) where
 
 import Options.Applicative
-
 import System.Pomodoro.App (Pomodoro(..))
 
+-- | Read pomodoro command line arguments
 readPomodoro :: IO Pomodoro
 readPomodoro = execParser opts
   where
