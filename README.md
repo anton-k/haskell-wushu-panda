@@ -22,6 +22,8 @@ or maybe dive deeper in some topics yourself.
 
 * [Pomodoro timer](https://github.com/anton-k/haskell-wushu-panda/blob/main/01-pomodoro/README.md)
 
+* [Password obfusscation](https://github.com/anton-k/haskell-wushu-panda/blob/main/02-password-obfuscator/README.md)
+
 ### How to learn Haskell in practice
 
 Haskell is a great language. There is no doubt about it. But also 
@@ -70,4 +72,10 @@ My advice to learn the Haskell is
   when you really need the help. Although you can find a job with those tools
   they won't make you a better programmer without application to the real code
   and you can loose lots of time on it and be discouraged by people who seems to be know more than you.
+
+The course is for a novice who already knows what Monad, Applicative ot Typeclassopedia 
+units are but does not know how to put that knowledge in practice. 
+So I'm not going to explain the basics but try to make it as accessible as I can
+and demystify some advanced or mundane topics.
+
 
