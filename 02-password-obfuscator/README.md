@@ -117,7 +117,7 @@ it's safer to go through our routine twice and generate the password with the sa
   ```
   
   Look at [commands](https://hackage.haskell.org/package/optparse-applicative-0.16.1.0#commands)
-  in the library `optparse-applicative`.
+  in the library `optparse-applicative` to implement latter case.
 
 
 
