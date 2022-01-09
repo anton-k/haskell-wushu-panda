@@ -107,13 +107,13 @@ it's safer to go through our routine twice and generate the password with the sa
   we can set option with:
 
   ```
-  hpass --set name --value value
+  hpass --set NAME --value VALUE
   ```
   
   or 
 
   ```
-  hpass set name value
+  hpass set NAME VALUE
   ```
   
   Look at [commands](https://hackage.haskell.org/package/optparse-applicative-0.16.1.0#commands)
