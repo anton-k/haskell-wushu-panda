@@ -461,7 +461,15 @@ And after that we can invoke it with shortcut:
     [---progress-bar-------------------] 1 % | time remains
     ```
 
-* add an option for showing the task name in the greeting so that 
+  Make a flag for it to show or not to show the detailed time information.
+
+* add an option for showing the task name in the greeting. So that 
     we know which pomodoro we are eating right now. 
     Write it so that module `App.hs` stays unchanged.
+  Also make this thing optional `--task "Task name"`. If it's omitted then it's not shown. 
+
+* if you work remote you probably have coworkers that live in other time-zones. 
+    We need to be able to quickly calculate time-zone differences when we arrange for meetings.
+    Write a simple command line application to convert time in any time-zone to local time and from
+    local to the dedicated zone. 
 

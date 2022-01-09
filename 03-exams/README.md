@@ -16,8 +16,9 @@ single choice questions and get results at the end.
 
 ## Exercises
 
-* Add logging of the answers to the `ExamResult`. So that we can know not
-  only final result but also answers.
+* Add logging of the answers to the `ExamResult`. So that we can know all the answers to questions (integer ids of the choices).
+
+* Extend system to handle multiple choices
 
 * Can we limit our exam by time? Often we have only limited amount of time to pass the exam.
     Add timer and time stamps of when exam has started and when it was finished in the `ExamResult`.

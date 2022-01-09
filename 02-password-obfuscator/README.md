@@ -405,6 +405,15 @@ it's safer to go through our routine twice and generate the password with the sa
 * Some platforms require passwords to be no more than so many symbols.
     Add option to generate passwords of certain size.
 
+* Some platforms restrict passwords to certain subsets. Some of them require chars digits and special symbols.
+  This will do as default, but some can not handle special symbols. Add an option
+  to filter out numbers or special symbols. We can make it as argument:
+
+  ```
+  --symbols chars+digits+specials  -- for default
+  --symbols chars+digits           -- for no specials 
+  ```
+
 * Often it's useful to store options in human readable form. 
     Add YAML representation of the options and use this format instead of Haskell show/read.
     Read from the yaml file. Use library [yaml](https://hackage.haskell.org/package/yaml).
@@ -429,4 +438,10 @@ it's safer to go through our routine twice and generate the password with the sa
   
   Look at [commands](https://hackage.haskell.org/package/optparse-applicative-0.16.1.0#commands)
   in the library `optparse-applicative` to implement latter case.
+
+* It is interesting to try out automatic password expiry option.
+   We can querry current year and append it to the master password. 
+   This way we are forced to change the password every year.
+   Use function `getCurrentTime` from the `time` library to query the current year.
+
 
