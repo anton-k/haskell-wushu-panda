@@ -1,20 +1,20 @@
-# Password obfuscator
+# Password obfuscation
 
 ![Safe pic](https://github.com/anton-k/haskell-wushu-panda/blob/main/img/password-obfuscator.jpg)
 
 Many web sites do want to know our credentials. Hopefully they use
-obfuscation techniques to prevent stealing of the paswords and reusal of them
-on other platforms. Hopefully they do it but unfortunately some don't do that
+obfuscation techniques to prevent stealing of the passwords and reuse of them
+on other platforms. Hopefully they do it but unfortunately some of them don't do that
 and even don't do that on purpose. 
 
 As martial pandas we know lots of top secrets and we'd like to keep them safe.
-So let's create a tool to obfuscate the passeords so that we can easily
+So let's create a tool to obfuscate the passwords so that we can easily
 generate passwords for various platforms. 
 
 Our requirements: it should be easy to 
 * generate strong passwords 
 * update passwords if it's reused or expired
-* we don't know the passwrds and can not look them up (auto copy paste)
+* we don't know the passwords and can not look them up (auto copy paste)
 
 ## Password obfuscation theory
 
@@ -34,7 +34,7 @@ We can pick up any of them. We can study the hackage to choose the algorithm we 
 Hopefully somebody already implemented that and indeed we have several options.
 Let's use library [argon2](https://hackage.haskell.org/package/argon2).
 Study the docs for the library.
-We init the project and add `argon2` to dependencies.
+We initialise the project and add `argon2` to dependencies.
 
 ```
 -- file hpass.cabal
@@ -49,7 +49,7 @@ Also we add useful `text-short` and `bytestring` packages that `argon2` relies o
 
 ## Design of the application
 
-We will create a CLI that asks for master password and auxilliary input
+We will create a CLI that asks for master password and auxiliary input
 to produce derived password. The password is going to by pasted to our buffer.
 So that we can Copy paste it in the browser window that asks for it.
 
@@ -90,7 +90,7 @@ So we can see the result of the obfuscation.
 Unfortunately library also prepends all parameters of the algorithm which makes it vulnerable.
 It separates arguments with dollar signs `$`. Actual output that we need
 is the last one. Let's split string by dollars. For that we will use the library `split`.
-we need to add as dependency and restart ghci session:
+We need to add as dependency and restart ghci session:
 
 ```haskell
 > commands as before
@@ -132,7 +132,7 @@ Crypto.Hpass.App
 Crypto.Hpass.Args
 ```
 
-Let's start with the code for application. First let's dfine types
+Let's start with the code for application. First let's define types
 and make stubs for the functions:
 
 ```haskell
@@ -165,7 +165,7 @@ runHpass :: Hpass -> IO ()
 runHpass cfg = undefined
 ```
 
-also we have saved useful functions from trying out `argon2` in the `ghci` session.
+Also we have saved useful functions from trying out `argon2` in the `ghci` session.
 What our `runHpass` is going to do? We take in the options, derive the key 
 and save that key to clipboard to copy paste that in the browser window.
 
@@ -174,7 +174,7 @@ and save that key to clipboard to copy paste that in the browser window.
 We almost done the only missing part is saving to clipboard for that we are going
 to use [Hclip](https://hackage.haskell.org/package/Hclip) library.
 It is also not present on Stackage. So to use it we need to add it to the list
-of extra-deps in the `stack.yaml` filer:
+of `extra-deps` in the `stack.yaml` filer:
 
 ```yaml
 extra-deps:
@@ -183,7 +183,7 @@ extra-deps:
     commit: cafbc6e5d998ba182d92879c3a6e7b3f5ca93fc1
 ```
 
-Also we add depenedency to the `hpass.cabal` file:
+Also we add dependency to the `hpass.cabal` file:
 
 ```
 build-depends:
@@ -193,7 +193,7 @@ build-depends:
   , Hclip
 ```
 
-Ok let's try it out in the ghci. the only function we need is `setClipboard`:
+Let's try it out in the `ghci`. The only function we need is `setClipboard`:
 
 ```haskell
 > stack ghci
@@ -202,7 +202,7 @@ Ok let's try it out in the ghci. the only function we need is `setClipboard`:
 > setClipboard "haskell-copy"
 ```
 
-try to paste it in your browser or editor.
+Try to paste it in your browser or editor.
 
 ### Complete the application
 
@@ -216,7 +216,7 @@ runHpass cfg =
     Left err  -> putStrLn err
 ```
 
-So we have a working application. We can test it in the ghci
+So we have a working application. We can test it in the `ghci`
 and move on to implementation of the CLI. 
 
 ### Parse the arguments
@@ -232,7 +232,7 @@ readHpass :: IO Hpass
 readHpass = undefined
 ```
 
-We querry the user for password and site name (which becomes also a secret).
+We query the user for password and site name (which becomes also a secret).
 This way our passwords depend on the URL of the site.
 We can use it like this:
 
@@ -275,14 +275,14 @@ fromSecret site = take 100 $ cycle site
 ```
 
 It's an easy exercise for the reader.
-After that we have the working application. That's cool! only we have some minor issues.
+After that we have the working application. That's cool! Only we have some minor issues.
 
 ### Hide the master password input
 
 It's not a great idea to type master password as plain string.
 It is visible to everybody behind our shoulder and also this approach
 makes it easy to hunt for our password by reading terminal history.
-Just type `history` and you are ready to grab our top secrret password.
+Just type `history` and you are ready to grab our top secret password.
 This is bad. To fix that we are going to modify argument reader.
 Instead of reading it from arguments we will prompt user for it.
 We will read only site name and file that keeps the hashing algorithm options.
@@ -336,11 +336,11 @@ fromArgs Args{..} = do
 
 This function reads the options from file if it's specified 
 otherwise it uses default options. It just copies secret as is.
-As the last step it queries passord. 
+As the last step it queries password. 
 
 We solved one problem. It's no longer possible to look up master password in the 
 terminal history. But password is still visible. We can make a solution with
-special function that does not echoes input (solution is taken from StackOverflow):
+special function that does not echoes input (solution is taken from `StackOverflow`):
 
 ```haskell
 import System.IO
@@ -384,19 +384,19 @@ Password: <invisible wushu panda secret pass>
 ```
 
 That's it! We did it. It took us 80 lines of code to complete the task.
-Ofcourse we could do it that fast because we have standed on the shoulders of giants
+Of course we could do it that fast because we have stood on the shoulders of giants
 who implemented for us
 
 * argon2
 * Hclip
 * split
-* other useful haskell libraries
+* other useful Haskell libraries
 
 We can build things much faster if we can reuse solutions.
 
 ## Tips and tricks
 
-As we don't know the password it's easy to misspel stuff on the init. 
+As we don't know the password it's easy to misspell stuff on the sign up. 
 If the site wants to retype the password don't copy-paste it twice. Instead
 it's safer to go through our routine twice and generate the password with the same inputs.
 
@@ -409,12 +409,12 @@ it's safer to go through our routine twice and generate the password with the sa
     Add YAML representation of the options and use this format instead of Haskell show/read.
     Read from the yaml file. Use library [yaml](https://hackage.haskell.org/package/yaml).
 
-* Make default file for the hpass options. For now we need to supply the string to the file.
+* Make default file for the `hpass` options. For now we need to supply the string to the file.
   Instead of that if file is missing try to read YAML config from default file in 
-  current directory (say ".hpassrc"). If file is missing either only then use default argon2 options. 
+  current directory (say `.hpassrc`). If file is missing either only then use default `argon2` options. 
   Use library [`directory`](https://hackage.haskell.org/package/directory) to solve that.
 
-* Make manager of the options. For example instead of editting the `/home/user/.hpassrc` file
+* Make manager of the options. For example instead of editing the `/home/user/.hpassrc` file
   we can set option with:
 
   ```

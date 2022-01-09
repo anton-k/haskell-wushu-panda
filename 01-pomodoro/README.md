@@ -2,12 +2,12 @@
 
 ![Pomodoro pic](https://github.com/anton-k/haskell-wushu-panda/blob/main/img/pomodoro-2.png)
 
-as we are wushu pandas we are happy to be always on time. and exercise regulary.
+as we are wushu pandas we are happy to be always on time and exercise regularly.
 Pomodoro technique is a key to our mastery. In this chapter we will build a pomodoro 
 timer and learn handful of tricks.
 We are going to learn how to:
 
-* init project with stack and common lines to work with the haskell project like a pro
+* Initialise project with stack and common lines to work with the Haskell project like a pro
 * create command line utilities
 * use libraries 
 * how to show nice progress bars
@@ -30,7 +30,7 @@ On the run it will show the progress bar as time passes as percentage
 and when we rich 100 % it will run the command. 
 In the example we can print out the **done** message
 also I'd like to play some song with it to signal that we are done. 
-For example on linux with pulse audio we can run:
+For example on Linux with pulse audio we can run:
 
 ```
 paplay bingo.wav
@@ -40,17 +40,17 @@ This way we get notified that our work/rest period is over.
 
 ## Init the project
 
-For this series we are going to use **stack** tool to build and run haskell applications. 
+For this series we are going to use **stack** tool to build and run Haskell applications. 
 Let's create an empty project:
 
 ```
 > stack new pomodoro
 ```
 
-I also like to work with cabal file and don't like hpack by default so after
-that I usually remove package.yaml. 
+I also like to work with cabal file and don't like `hpack` by default so after
+that I usually remove `package.yaml`. 
 
-to check that everything works we can use:
+To check that everything works we can use:
 
 ```
 > stack build --file-watch
@@ -68,7 +68,7 @@ To install the executable and
 > stack ghci 
 ```
 
-to try out the functions in ghci.
+To try out the functions in `ghci`.
 
 ## Design of the app
 
@@ -110,7 +110,7 @@ Let's start with our pomodoro application. What is it good for?
 It can wait for some amount of time (usually in minutes) and after
 time passes it will run given command.
 
-It would be nice to be able to show the porgress so that we know how much time we have.
+It would be nice to be able to show the progress so that we know how much time we have.
 Let's start with the type:
 
 ### Start with types and template
@@ -200,7 +200,7 @@ runPomodoro Pomodoro{..} = do
   void $ system pomodoro'onExit
 ```
 
-We use haskell extension `RecordWildCards`. We need to add it to cabal file. In the library
+We use Haskell extension `RecordWildCards`. We need to add it to cabal file. In the library
 section after `default-language` define a new field:
 
 ```
@@ -217,7 +217,7 @@ So in that function we optionally print the greeting:
   mapM_ putStrLn pomodoro'greet
 ```
 
-Don't be shy to lookup the function on the web or study it's type in the ghci
+Don't be shy to lookup the function on the web or study it's type in the `ghci`
 to know what it does. For example we can take `mapM_` and play with it:
 
 ```haskell
@@ -236,8 +236,8 @@ After that we count how many seconds we have and define the progress bar:
   pb <- newProgressBar defStyle 10 (Progress 0 seconds ())
 ```
 
-we wait for so many seconds. The function `replicateM_` executes the procedure
-so many times. In our case each time wwe wait for a second and increment the timer.
+We wait for so many seconds. The function `replicateM_` executes the procedure
+so many times. In our case each time we wait for a second and increment the timer.
 
 ```haskell
   replicateM_ seconds (step pb)
@@ -252,9 +252,9 @@ As the last step we just run the final command:
 We ignore the result with function `void`.
 That's it we are done with pomodoro app. 
 
-### Testing in the repl
+### Testing in the REPL
 
-We can try out our app in the repl:
+We can try out our app in the REPL:
 
 ```
 stack ghci
@@ -272,15 +272,15 @@ done
 
 Also we can stop it with `Ctrl+C`.
 
-Nice! For now we can track our time in ghci ad we can schedule work and rest periods.
-One cool hint in linux there are dozens of command line tools to play a wav/mp3 files.
+Nice! For now we can track our time in `ghci` ad we can schedule work and rest periods.
+One cool hint in Linux there are dozens of command line tools to play a wav/mp3 files.
 We can schedule a bingo song to celebrate our end of work moment.
 I like to use `paplay` or `cplay`. Let's take a short well-deserved brake.
 
 
 ## Parse command line arguments
 
-For now we have function that runs a pomidoro timer.
+For now we have function that runs a `pomidoro` timer.
 We would like to use it as CLI. For that we need to know how to parse the arguments.
 Let's learn about that. We can use a cool library [optparse-applicative](https://hackage.haskell.org/package/optparse-applicative).
 It has cool documentation. So visit the link and study the beginning of it. 
@@ -314,14 +314,14 @@ of `<*>`'s. For example we can sum up four maybes:
 Nothing
 ```
 
-The optparse does the same trick with command line arguments. 
+The `optparse-applicative` does the same trick with command line arguments. 
 Every `Just` becomes single option parser and we can aggregate them with applicative methods.
 Also we can specify the type to parse and help documentation for arguments.
-I keep forgetting it all the time, so just use hackage docs to do it again.
+I keep forgetting it all the time, so just use Hackage docs to do it again.
 
 Back to our pomodoro task. We need two fields to read: 
 
-minutes as integers:
+Minutes as integers:
 
 ```haskell
 import Options.Applicative
@@ -358,7 +358,7 @@ Command lines as strings
 ```
 I think it's self explanatory. We defined nice defaults and help docs messages. 
 Only we need to remember that `option auto` produces `Int`
-in this context and strOption produces `String`.
+in this context and `strOption` produces `String`.
 
 We can combine those functions with applicative to get the spec:
 
@@ -386,7 +386,7 @@ readPomodoro = execParser opts
 ```
 
 Notice how we use our main function `pomodoroArgs`. The rest is a common boilerplate
-that is easy to look up in the hackage docs. I don't know still what raccoon operator
+that is easy to look up in the Hackage docs. I don't know still what raccoon operator
 `<**>` means. But surprisingly we are done with the code. 
 This is a power of Haskell in action. We did something useful in just 60 lines of code.
 
