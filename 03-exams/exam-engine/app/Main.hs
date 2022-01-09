@@ -1,6 +1,7 @@
 module Main where
 
-import Lib
+import Exam.App
+import Exam.Args
 
 main :: IO ()
-main = someFunc
+main = runExam defaultSpec =<< readExam
