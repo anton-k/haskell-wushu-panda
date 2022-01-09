@@ -5,21 +5,26 @@ module Exam.App(
 
 import Control.Monad.Writer.Strict
 import Exam.Types as X
+import Safe
 
-evalExam :: Exam -> IO ExamResult
-evalExam = undefined
-
-saveExam :: Exam -> ExamResult -> IO ()
-saveExam = undefined
-
-runExam :: Spec -> Exam -> IO ()
-runExam Spec{..} Exam{..} = do
- spec'init $ desc'note exam'questions
+runExam :: Act -> Spec -> IO ()
+runExam Act{..} (Spec person Exam{..}) = do
+ act'init $ exam'greeting
  res <- execWriterT $ mapM_ query $ desc'data exam'questions
- spec'exit res
+ act'exit (ExamResult person (desc'title exam'questions) res)
  where
   query qn = do
-    n <- liftIO $ spec'ask qn
+    n <- liftIO $ act'ask qn
     step qn n
 
+-----------------------------------------------------------------
+
+type Run a = WriterT Score IO a
+
+step :: Question -> Int -> Run ()
+step qn ans = mapM_ tell $ toAnswer qn ans
+
+toAnswer :: Question -> Int -> Maybe Score
+toAnswer (Question (Desc _ opts)) n =
+  fmap desc'data $ opts `atMay` n
 

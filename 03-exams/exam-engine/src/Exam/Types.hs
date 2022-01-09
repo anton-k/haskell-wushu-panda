@@ -1,68 +1,72 @@
 module Exam.Types(
   Exam(..),
-  ExamResult(..),
   Desc(..),
   Question(..),
   Score(..),
   score,
   Bin(..),
+  Act(..),
   Spec(..),
-  Run,
-  step,
+  ExamResult(..),
 ) where
 
-import Control.Monad.Writer.Strict
+import Data.Aeson
+import Data.Aeson.TH (deriveJSON)
 
 import Data.Map.Strict (Map)
 import Data.Text (Text)
+import GHC.Generics
 import qualified Data.Map.Strict as M
-import Safe
+import Exam.Utils.Aeson
+
+data Desc a = Desc
+  { desc'title :: Text
+  , desc'data  :: a
+  }
+  deriving stock (Show)
+$(deriveJSON dropPrefixOptions ''Desc)
 
 newtype Bin = Bin
   { bin'name :: Text
   }
-  deriving (Show, Eq, Ord)
+  deriving newtype (Show, Eq, Ord, ToJSON, FromJSON, ToJSONKey, FromJSONKey)
+
+newtype Question = Question (Desc [Desc Score])
+  deriving newtype (Show, ToJSON, FromJSON)
+
+newtype Score = Score (Map Bin Int)
+  deriving newtype (Show, ToJSON, FromJSON)
+
+score :: Bin -> Int -> Score
+score b n = Score $ M.singleton b n
 
 data Spec = Spec
-  { spec'ask  :: Question -> IO Int
-  , spec'init :: Text -> IO ()
-  , spec'exit :: ExamResult -> IO ()
+  { spec'name   :: Text
+  , spec'exam   :: Exam
   }
+
+instance Semigroup Score where
+  (<>) (Score a) (Score b) = Score $ M.unionWith (+) a b
+
+instance Monoid Score where
+  mempty = Score mempty
 
 data Exam = Exam
   { exam'questions :: Desc [Question]
+  , exam'greeting  :: Text
   }
+  deriving stock (Show)
+$(deriveJSON dropPrefixOptions ''Exam)
 
-data Desc a = Desc
-  { desc'note :: Text
-  , desc'data :: a
+data ExamResult = ExamResult
+  { examResult'name    :: Text
+  , examResult'exam    :: Text
+  , examResult'scores  :: Score
   }
+$(deriveJSON dropPrefixOptions ''ExamResult)
 
-newtype Question = Question (Desc [Desc Score])
-
-newtype Score = Score ExamResult
-
-score :: Bin -> Int -> Score
-score b n = Score $ ExamResult $ M.singleton b n
-
-newtype ExamResult = ExamResult
-  { examResult'scores :: Map Bin Int
+data Act = Act
+  { act'ask  :: Question -> IO Int
+  , act'init :: Text -> IO ()
+  , act'exit :: ExamResult -> IO ()
   }
-
-instance Semigroup ExamResult where
-  (<>) (ExamResult a) (ExamResult b) = ExamResult $ M.unionWith (+) a b
-
-instance Monoid ExamResult where
-  mempty = ExamResult mempty
-
-----------------------------------------------------------
-
-type Run a = WriterT ExamResult IO a
-
-step :: Question -> Int -> Run ()
-step qn ans = mapM_ tell $ toAnswer qn ans
-
-toAnswer :: Question -> Int -> Maybe ExamResult
-toAnswer (Question (Desc _ opts)) n =
-  fmap ((\(Score res) -> res) . desc'data) $ opts `atMay` n
-

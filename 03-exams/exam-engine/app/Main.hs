@@ -4,4 +4,4 @@ import Exam.App
 import Exam.Args
 
 main :: IO ()
-main = runExam defaultSpec =<< readExam
+main = uncurry runExam =<< readExam

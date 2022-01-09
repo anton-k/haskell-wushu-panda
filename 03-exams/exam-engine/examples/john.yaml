@@ -1,0 +1,5 @@
+exam: Math exam (1 grade)
+name: john
+scores:
+  Right: 2
+  Wrong: 1

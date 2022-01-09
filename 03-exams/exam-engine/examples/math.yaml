@@ -1,0 +1,37 @@
+questions:
+  data:
+  - data:
+    - data:
+        Wrong: 1
+      title: '2'
+    - data:
+        Wrong: 1
+      title: '2'
+    - data:
+        Right: 1
+      title: '4'
+    title: '2 + 2 equals:'
+  - data:
+    - data:
+        Wrong: 1
+      title: '3'
+    - data:
+        Wrong: 1
+      title: '-5'
+    - data:
+        Right: 1
+      title: '-2'
+    title: '3 + -5 equals:'
+  - data:
+    - data:
+        Wrong: 1
+      title: '100'
+    - data:
+        Wrong: 1
+      title: '12'
+    - data:
+        Right: 1
+      title: '112'
+    title: '100 + 12 equals:'
+  title: 'Math exam (1 grade)'
+greeting: 'Welocme to elementory math exam:'
