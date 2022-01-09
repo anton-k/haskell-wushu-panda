@@ -6,7 +6,8 @@ module Crypto.Hpass.App(
 import Data.Bifunctor
 import Data.ByteString (ByteString)
 import Data.List.Split (splitOn)
-import Data.Text.Short
+import Data.Text.Short (ShortText, toByteString, unpack)
+import qualified Data.List as L
 import Crypto.Argon2 (hashEncoded, HashOptions)
 import System.Hclip (setClipboard)
 
@@ -22,7 +23,7 @@ deriveKey Hpass{..} = bimap show id $
   hashEncoded hpass'options (toByteString hpass'masterPassword) (toByteString hpass'secret)
 
 stripParams :: String -> String
-stripParams str = last $ splitOn "$" str
+stripParams str = L.intercalate "$" $ drop 5 $ splitOn "$" str
 
 runHpass :: Hpass -> IO ()
 runHpass cfg =

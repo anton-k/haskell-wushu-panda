@@ -1,6 +1,5 @@
 module Crypto.Hpass.Args(
   readHpass,
-  readSimpleHpass,
 ) where
 
 import Options.Applicative
@@ -23,10 +22,12 @@ fromArgs Args{..} = do
   pure Hpass{..}
 
 readHpass :: IO Hpass
-readHpass = fromArgs =<< readBy preArgs
-
-readSimpleHpass :: IO Hpass
-readSimpleHpass = readBy hpassArgs
+readHpass = fromArgs =<< execParser opts
+  where
+    opts = info (preArgs <**> helper)
+      ( fullDesc
+     <> progDesc "Password obfuscator"
+     <> header "Hpass generates strong password out of single master password" )
 
 preArgs :: Parser Args
 preArgs = Args
@@ -43,37 +44,12 @@ preArgs = Args
          <> metavar "STRING"
          <> help "Path to hash config file")
 
-hpassArgs :: Parser Hpass
-hpassArgs = (\psw secret -> Hpass (T.pack psw) (T.pack $ fromSecret secret) defaultHashOptions)
-      <$> getPass
-      <*> getSite
-  where
-    getPass = strOption
-          ( long "password"
-         <> short 'p'
-         <> metavar "STRING"
-         <> help "Master password")
-
-    getSite = strOption
-          ( long "site"
-         <> short 's'
-         <> metavar "STRING"
-         <> help "Web site")
-
 fromSecret :: String -> String
 fromSecret site = take 100 $ cycle site
 
-readBy :: Parser a -> IO a
-readBy getOpts = execParser opts
-  where
-    opts = info (getOpts <**> helper)
-      ( fullDesc
-     <> progDesc "Password obfuscator"
-     <> header "Hpass generates strong password out of single master password" )
-
 -------------------------------------------------------------------------
 
--- | Reads the password without echoing the input
+-- | Read the password without echoing the input
 getPassword :: IO String
 getPassword = do
   putStr "Password: "
@@ -86,4 +62,3 @@ withEcho :: Bool -> IO a -> IO a
 withEcho echo action = do
   old <- hGetEcho stdin
   bracket_ (hSetEcho stdin echo) (hSetEcho stdin old) action
-
