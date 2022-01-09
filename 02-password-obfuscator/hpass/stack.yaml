@@ -41,6 +41,7 @@ packages:
 #   commit: e7b331f14bcffb8367cd58fbfc8b40ec7642100a
 #
 extra-deps:
+  - Hclip-3.0.0.4
   - git: https://github.com/haskell-hvr/argon2
     commit: cafbc6e5d998ba182d92879c3a6e7b3f5ca93fc1
 

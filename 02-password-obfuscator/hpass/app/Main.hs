@@ -1,6 +1,7 @@
 module Main where
 
-import Lib
+import Crypto.Hpass.App
+import Crypto.Hpass.Args
 
 main :: IO ()
-main = someFunc
+main = runHpass =<< readHpass

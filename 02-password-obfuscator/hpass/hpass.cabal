@@ -25,7 +25,8 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+    Crypto.Hpass.App
+    Crypto.Hpass.Args
   other-modules:
       Paths_hpass
   hs-source-dirs:
@@ -33,7 +34,15 @@ library
   build-depends:
       base >=4.7 && <5
     , argon2
+    , bytestring
+    , Hclip
+    , optparse-applicative
+    , split
+    , text-short
   default-language: Haskell2010
+  default-extensions:
+    OverloadedStrings
+    RecordWildCards
 
 executable hpass
   main-is: Main.hs
