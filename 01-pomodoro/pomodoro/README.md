@@ -29,4 +29,11 @@ shows progress bar and executes a command after it's done:
 This way we can get notified that time for task is over and have a break.
 By default the command prints `done` to console.
 
+It's great to make an alias for the common task in the `~/.bashrc` file:
+
+```
+alias pom='pomodoro -c "paplay ~/music/pomodoro-song.wav" -m '
+```
+
+
 
