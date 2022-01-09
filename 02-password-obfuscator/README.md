@@ -50,13 +50,13 @@ Also we add useful `text-short` and `bytestring` packages that `argon2` relies o
 ## Design of the application
 
 We will create a CLI that asks for master password and auxiliary input
-to produce derived password. The password is going to by pasted to our buffer.
+to produce derived password. The password is going to be pasted to our clipboard buffer.
 So that we can Copy paste it in the browser window that asks for it.
 
 ## Include github dependency to stack
 
-With argon2 we face the problems. As we can not use it on stack directly.
-Stack keeps it's own versions of some subset of the hackage. The rest of the libraries
+With `argon2` we face the problems. As we can not use it on stack directly.
+Stack keeps it's own versions of some subset of the Hackage. The rest of the libraries
 we need to specify in the `extra-deps` field of the `stack.yaml` file.
 For our task we need to add to `stack.yaml`:
 
@@ -171,7 +171,7 @@ and save that key to clipboard to copy paste that in the browser window.
 
 ### Copy paste the result
 
-We almost done the only missing part is saving to clipboard for that we are going
+We are almost done. The only missing part is saving to clipboard. For that we are going
 to use [Hclip](https://hackage.haskell.org/package/Hclip) library.
 It is also not present on Stackage. So to use it we need to add it to the list
 of `extra-deps` in the `stack.yaml` filer:
@@ -241,7 +241,7 @@ We can use it like this:
 ```
 
 We can copy paste the solution from the previous task and adapt it to our needs.
-we need to read strings in both cases. We can use the function `getCmd` and
+We need to read strings in both cases. We can use the function `getCmd` and
 change the description and field names. Also we can borrow the parser definition 
 from pomodoro example. 
 
@@ -279,8 +279,8 @@ After that we have the working application. That's cool! Only we have some minor
 
 ### Hide the master password input
 
-It's not a great idea to type master password as plain string.
-It is visible to everybody behind our shoulder and also this approach
+It's not a great idea to type master password as a plain string.
+It is visible to everybody behind our shoulders and also this approach
 makes it easy to hunt for our password by reading terminal history.
 Just type `history` and you are ready to grab our top secret password.
 This is bad. To fix that we are going to modify argument reader.
@@ -400,7 +400,7 @@ As we don't know the password it's easy to misspell stuff on the sign up.
 If the site wants to retype the password don't copy-paste it twice. Instead
 it's safer to go through our routine twice and generate the password with the same inputs.
 
-## Exercise
+## Exercises
 
 * Some platforms require passwords to be no more than so many symbols.
     Add option to generate passwords of certain size.
