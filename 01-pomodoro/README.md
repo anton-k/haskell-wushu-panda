@@ -2,7 +2,7 @@
 
 ![Pomodoro pic](https://github.com/anton-k/haskell-wushu-panda/blob/main/img/pomodoro-2.png)
 
-as we are wushu pandas we are happy to be always on time and exercise regularly.
+As we are wushu pandas we are happy to be always on time and exercise regularly.
 Pomodoro technique is a key to our mastery. In this chapter we will build a pomodoro 
 timer and learn handful of tricks.
 We are going to learn how to:
@@ -19,7 +19,7 @@ Between them we can rest and step away from the working place to exercise
 or have time to think different or just to have good rest for 5-10 minutes.
 This avoids fatigue and keeps us focused on single task when we work.
 
-that will make you a better haskeller. 
+That will make you a better haskeller. 
 We are going to create command line utility that works like this:
 
 ```
