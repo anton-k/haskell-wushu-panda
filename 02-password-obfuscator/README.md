@@ -389,13 +389,10 @@ who implemented for us
 
 * argon2
 * Hclip
+* split
 * other useful haskell libraries
 
-reusing those solutions let's us build things faster.
-
-## Nix instead of stack
-
-Let's use the Nix instead of stack for a change. 
+We can build things much faster if we can reuse solutions.
 
 ## Tips and tricks
 
