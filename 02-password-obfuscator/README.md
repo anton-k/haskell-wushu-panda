@@ -94,4 +94,30 @@ it's safer to go through our routine twice and generate the password with the sa
 * Some platforms require passwords to be no more than so many symbols.
     Add option to generate passwords of certain size.
 
+* Often it's useful to store options in human readable form. 
+    Add YAML representation of the options and use this format instead of Haskell show/read.
+    Read from the yaml file. Use library [yaml](https://hackage.haskell.org/package/yaml).
+
+* Make default file for the hpass options. For now we need to supply the string to the file.
+  Instead of that if file is missing try to read YAML config from default file in 
+  current directory (say ".hpassrc"). If file is missing either only then use default argon2 options. 
+  Use library [`directory`](https://hackage.haskell.org/package/directory) to solve that.
+
+* Make manager of the options. For example instead of editting the `/home/user/.hpassrc` file
+  we can set option with:
+
+  ```
+  hpass --set name --value value
+  ```
+  
+  or 
+
+  ```
+  hpass set name value
+  ```
+  
+  Look at [commands](https://hackage.haskell.org/package/optparse-applicative-0.16.1.0#commands)
+  in the library `optparse-applicative`.
+
+
 
