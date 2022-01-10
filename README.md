@@ -31,9 +31,10 @@ to build something great, useful or just fun and enjoyable.
 
 * [Password obfuscation](https://github.com/anton-k/haskell-wushu-panda/blob/main/02-password-obfuscator/README.md)
 
-* [Exam engine (part 1). Simple CLI implementation](https://github.com/anton-k/haskell-wushu-panda/blob/main/03-exams/README.md)
+* Exam engine 
+    * [Simple CLI implementation](https://github.com/anton-k/haskell-wushu-panda/blob/main/03-exams/03-01-exams-simple/README.md)
 
-* [Exam engine (part 2). Making it interactive](https://github.com/anton-k/haskell-wushu-panda/blob/main/04-exams-interactive/README.md)
+    * [Making it interactive](https://github.com/anton-k/haskell-wushu-panda/blob/main/03-exams/03-02-exams-interactive/README.md)
 
 ### How to learn Haskell in practice
 
