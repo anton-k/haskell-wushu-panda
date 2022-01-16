@@ -5,13 +5,13 @@ module Exam.App(
 
 import Control.Monad.Writer.Strict
 import Exam.Types as X
-import Safe
+import Safe (atMay)
 
 runExam :: Act -> Spec -> IO ()
 runExam Act{..} (Spec person Exam{..}) = do
  act'init $ exam'greeting
- res <- execWriterT $ mapM_ query $ desc'data exam'questions
- act'exit (ExamResult person (desc'title exam'questions) res)
+ res <- execWriterT $ mapM_ query exam'questions
+ act'exit (ExamResult person exam'name res)
  where
   query qn = do
     n <- liftIO $ act'ask qn

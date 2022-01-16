@@ -36,6 +36,64 @@ to build something great, useful or just fun and enjoyable.
 
     * [Making it interactive](https://github.com/anton-k/haskell-wushu-panda/blob/main/03-exams/03-02-exams-interactive/README.md)
 
+<!---
+Wish list of projects:
+
+* Graphics (generative art)
+
+* Oberheim synthesizer emulator (working with audio)
+
+* Memo app
+    * In memory implementation
+
+    * DB implementation
+
+* Compiler
+
+    * Lambda calculus language
+
+    * Wrapping to EDSL
+
+    * Parser
+
+    * Type-checker 
+
+    * REPL
+
+    * Compiler
+
+* Toy Blockchain
+    
+* Web site to manage finances
+
+    * Server (servant)
+
+    * Client (servant)
+
+    * Frontend (reflex/obelisk)
+
+* Boring chapter. ByteString/Text/JSON/whatever conversions
+
+* Hard chapter. Hunting for memory leaks
+
+* Concurrency task. (maybe flow lib revival)
+
+* ig/fb terminal chat over API
+
+* Linux audio configurator
+
+* Web crawler
+
+* Dive into NIX
+
+* Android app??? obelisk
+
+--->
+
+<!---
+## Interviews
+--->
+
 ### How to learn Haskell in practice
 
 Haskell is a great language. There is no doubt about it. But also 

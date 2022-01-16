@@ -1,0 +1,36 @@
+name: 'Biology exam'
+greeting: 'Welocme to elementory math exam:'
+questions:
+  - title: 'How many legs healty dog has:'
+    data:
+    - title: '2'
+      data:
+        Wrong: 1
+    - data:
+        Wrong: 1
+      title: '120'
+    - data:
+        Right: 1
+      title: '4'
+  - data:
+    - data:
+        Wrong: 1
+      title: 'Yes'
+    - data:
+        Right: 1
+      title: 'No'
+    - data:
+        Wrong: 1
+      title: 'Sometimes'
+    title: 'Can crocodiles fly:'
+  - data:
+    - data:
+        Right: 1
+      title: 'Eucariot'
+    - data:
+        Wrong: 1
+      title: 'Bacteria'
+    - data:
+        Wrong: 1
+      title: 'Archea'
+    title: 'Human is:'

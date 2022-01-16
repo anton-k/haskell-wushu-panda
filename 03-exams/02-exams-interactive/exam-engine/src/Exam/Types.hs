@@ -5,7 +5,6 @@ module Exam.Types(
   Score(..),
   score,
   Bin(..),
-  Act(..),
   Spec(..),
   ExamResult(..),
 ) where
@@ -42,6 +41,7 @@ score b n = Score $ M.singleton b n
 
 data Spec = Spec
   { spec'name   :: Text
+  , spec'file   :: FilePath
   , spec'exam   :: Exam
   }
 
@@ -52,7 +52,8 @@ instance Monoid Score where
   mempty = Score mempty
 
 data Exam = Exam
-  { exam'questions :: Desc [Question]
+  { exam'name      :: Text
+  , exam'questions :: [Question]
   , exam'greeting  :: Text
   }
   deriving stock (Show)
@@ -64,9 +65,3 @@ data ExamResult = ExamResult
   , examResult'scores  :: Score
   }
 $(deriveJSON dropPrefixOptions ''ExamResult)
-
-data Act = Act
-  { act'ask  :: Question -> IO Int
-  , act'init :: Text -> IO ()
-  , act'exit :: ExamResult -> IO ()
-  }

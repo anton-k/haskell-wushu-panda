@@ -33,7 +33,10 @@ fromArgs Args{..} = do
     Left err -> error $ show err
 
 readExam :: IO (Act, Spec)
-readExam = fromArgs =<< execParser opts
+readExam = fromArgs =<< readArgs
+
+readArgs :: IO Args
+readArgs = execParser opts
   where
     opts = info (examArgs <**> helper)
       ( fullDesc
@@ -63,12 +66,13 @@ readExam = fromArgs =<< execParser opts
 exam1 :: Exam
 exam1 =
   Exam
-    { exam'questions = (Desc "Math exam (1 grade):"
+    { exam'name = "Math exam (first grade)"
+    , exam'questions =
       [ qn 2 2
       , qn 3 (-5)
       , qn 100 12
-      ])
-    , exam'greeting = "Welocme to elementory math exam:"
+      ]
+    , exam'greeting = "Welcome to math exam:"
     }
   where
     qn a b =
@@ -123,7 +127,7 @@ defaultAct = Act{..}
       next
       T.putStrLn "Results:"
       next
-      mapM_ (\(Bin title, score) -> T.putStrLn $ mconcat ["  ", title, ": ", T.pack (show score)]) $ L.sortOn (negate . snd)  $ M.toList m
+      mapM_ (\(Bin title, score) -> T.putStrLn $ mconcat ["  ", title, ": ", text score]) $ L.sortOn (negate . snd)  $ M.toList m
       next
 
 text :: Show a => a -> Text
@@ -133,5 +137,5 @@ next :: IO ()
 next = putStrLn ""
 
 line :: IO ()
-line = putStrLn "---------------------------------"
+line = putStrLn $ replicate 30 '-'
 

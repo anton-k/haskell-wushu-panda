@@ -1,5 +1,6 @@
+name: 'Biology exam'
+greeting: 'Welocme to elementory math exam:'
 questions:
-  data:
   - title: 'How many legs healty dog has:'
     data:
     - title: '2'
@@ -33,5 +34,3 @@ questions:
         Wrong: 1
       title: 'Archea'
     title: 'Human is:'
-  title: 'Biology exam'
-greeting: 'Welocme to elementory math exam:'
