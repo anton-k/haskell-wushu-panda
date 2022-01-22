@@ -1,0 +1,11 @@
+resolver:
+  url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/18/21.yaml
+
+packages:
+- .
+
+extra-deps:
+  # - processing-for-haskell-0.1.0.1
+  - /home/anton/dev/hs/processing-for-haskell
+  - hsnoise-0.0.2
+

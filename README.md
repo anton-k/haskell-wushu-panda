@@ -68,8 +68,6 @@ Wish list of projects:
 
     * Server (servant)
 
-    * Client (servant)
-
     * Frontend (reflex/obelisk)
 
 * Boring chapter. ByteString/Text/JSON/whatever conversions

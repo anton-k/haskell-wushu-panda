@@ -18,21 +18,14 @@ import Data.Yaml.Pretty (encodePretty, defConfig)
 
 -- | Which question is active
 data ExamState = ExamState
-  { examState'questionId :: Int
-  , examState'score      :: Score
-  , examState'cursor     :: Maybe Int
-  , examState'log        :: Text
+  { examState'questionId :: Int           -- ^ current question
+  , examState'score      :: Score         -- ^ score so far
+  , examState'cursor     :: Maybe Int     -- ^ answer alternative choice
+  , examState'log        :: Text          -- ^ hints and help message for the user
   }
 
 defaultLog :: Text
 defaultLog = "Use arrows to choose answer, Enter to submit an answer"
-
-data Event
-  = Answer
-      { answer'questionId :: Int
-      , answer'choice     :: Int
-      }
-  | Quit
 
 runExam :: Spec -> IO ()
 runExam (Spec name outFile exam) = do
@@ -41,7 +34,7 @@ runExam (Spec name outFile exam) = do
   score <- examState'score <$> defaultMain app initialState
   B.writeFile outFile $ encodePretty defConfig (ExamResult name (exam'name exam) score)
 
-initApp :: Exam -> App ExamState Event ()
+initApp :: Exam -> App ExamState () ()
 initApp exam@Exam{..} = App{..}
   where
     --------------------------------------------------
@@ -65,7 +58,7 @@ initApp exam@Exam{..} = App{..}
     binToText (Bin title, score) = mconcat ["  ", title, ": ", showText score]
     sortScore (Score m) = L.sortOn (negate . snd)  $ M.toList m
 
-    drawQuestion qnId mCursor = case lookupQuestion exam qnId of
+    drawQuestion qnId mCursor = case lookupQuestion qnId of
       Just (Question qn) -> vBox
         [ preNum (qnId + 1) (desc'title qn)
         , line
@@ -78,11 +71,10 @@ initApp exam@Exam{..} = App{..}
     headLine = txt (T.replicate 70 "=")
 
     drawAnswer mCursor n ans
-      | mCursor == Just n = hBox [txt "* ", w]
+      | mCursor == Just n = withAttr "selected" $ hBox [txt "* ", w]
       | otherwise         = hBox [txt "  ", w]
       where
         w = preNum (n + 1) (desc'title ans)
-
 
     preNum n x = txt (mconcat [showText n, ". ", wrap x])
 
@@ -99,9 +91,10 @@ initApp exam@Exam{..} = App{..}
       VtyEvent (Vty.EvKey (Vty.KChar 'q') []) -> halt st
       _                                       -> continue st
 
-    updateCursor n st = case lookupQuestion exam (examState'questionId st) of
-      Just (Question qn) -> let total = length $ desc'data qn
-                 in  st { examState'cursor = maybe (Just 0) (Just . (`mod` total) . (+ n) ) $ examState'cursor st }
+    updateCursor n st = case lookupQuestion (examState'questionId st) of
+      Just (Question qn) ->
+        let total = length $ desc'data qn
+        in  st { examState'cursor = Just $ maybe 0 ((`mod` total) . (+ n) ) $ examState'cursor st }
       Nothing -> st
 
     setAnswer st = case examState'cursor st of
@@ -110,19 +103,19 @@ initApp exam@Exam{..} = App{..}
         in
           st
             { examState'questionId = nextQuestionId
-            , examState'score      = examState'score st <> lookupScore exam (examState'questionId st) choiceId
+            , examState'score      = examState'score st <> lookupScore (examState'questionId st) choiceId
             , examState'cursor     = Nothing
             , examState'log        = if nextQuestionId < totalSize then defaultLog else "Press Enter to exit"
             }
       Nothing -> st { examState'log = "No answer to the question. Use Up/Down arrow to choose the answer" }
 
-    lookupScore :: Exam -> Int -> Int -> Score
-    lookupScore exam qnId choiceId = fromMaybe mempty $ do
-      qn <- lookupQuestion exam qnId
+    lookupScore :: Int -> Int -> Score
+    lookupScore qnId choiceId = fromMaybe mempty $ do
+      qn <- lookupQuestion qnId
       toAnswer qn choiceId
 
-    lookupQuestion :: Exam -> Int -> Maybe Question
-    lookupQuestion Exam{..} qnId = exam'questions `atMay` qnId
+    lookupQuestion :: Int -> Maybe Question
+    lookupQuestion qnId = exam'questions `atMay` qnId
 
     toAnswer :: Question -> Int -> Maybe Score
     toAnswer (Question (Desc _ opts)) n =
