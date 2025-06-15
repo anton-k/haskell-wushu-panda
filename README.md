@@ -103,6 +103,7 @@ In this series, I'll guide you through learning **practical** Haskell using tiny
 concepts like functors, applicative functors, and typeclasses by showing how they work *in practice*. We’ll focus
 on hands-on application to make theory accessible and clear.
 
+<!---
 Haskell can be used for so many things — small command-line tools, web crawlers, site templates, crypto apps and
 that’s one of its greatest strengths.
 
@@ -136,3 +137,4 @@ The audience for this course is the **novice** developer who already understands
 Typeclasses are—but hasn't figured out how to use them in real projects. Therefore, I will not explain basics or
 dive into theory-only topics like `Typeclassopedia`. Instead, my goal here is simple: help you put that knowledge
 into practice while keeping things as accessible and clear as possible.
+--->
