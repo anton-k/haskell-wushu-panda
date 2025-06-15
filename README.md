@@ -92,58 +92,47 @@ Wish list of projects:
 
 ### How to learn Haskell in practice
 
-Haskell is a great language. There is no doubt about it. But also 
-It can be hard to use as it's not only practical but also full of experimental features.
-This is cool for a researcher (so many things to explore) but for the novice
-it can be easy to get lost among the features.
+Haskell is an amazing language. It blends powerful theoretical concepts with experimental features, which can make
+it feel complex for beginners, but that’s part of its richness.
 
-I think the best way to learn a tool is to try it out and do something cool with it.
-We can start a simple project and see how it works and makes our life a bit better.
+I recommend starting by building real projects—begin with small ones—to build practical skills without getting
+bogged down in theory or overwhelming details. This active approach helps you apply what you know and retain it
+better than passive study alone.
 
-In this series I hope to help you to learn practical Haskell by studying a 
-number of practical and useful tiny apps. In each app we will study some 
-practical aspect of this great language.
+In this series, I'll guide you through learning **practical** Haskell using tiny apps that demonstrate specific
+concepts like functors, applicative functors, and typeclasses by showing how they work *in practice*. We’ll focus
+on hands-on application to make theory accessible and clear.
 
-I have lots of experience with Haskell and I'd like to share it with you.
-Of course it's bound to my tastes. So it's great to watch out for many styles
-and find the one that suits you. For me I've always wanted to have something 
-done with Haskell and to do it as simple as possible.
+Haskell can be used for so many things — small command-line tools, web crawlers, site templates, crypto apps and
+that’s one of its greatest strengths.
 
-Maybe you will disagree on design choices or on implementation details this 
-is also great. Why not to experiment with it and make it different as you go.
+* **Collaborate on open projects or tackle work tasks**. Working alongside experienced developers (or even with
+   colleagues at your job) gives you valuable feedback and helps you apply best practices faster than reading about
+   them.
 
-My advice to learn the Haskell is 
+* Go beyond just studying the basics by diving into public code—especially the base/prelude—and gradually
+   exploring cool libraries like `servant`, `prettyprinter`, or `mtl`. It’s wonderful to see how concepts from **the
+   base** evolve in real-world applications.
 
-* find some cool project that will make you work hard
-   for pure fun of it. This way you can learn it faster and be motivated to do it in Haskell.
-   Keep it small so not to drawn in it. Get something cool done that you really need.
-   It can be small command line tool or web crawler, or even some web site template
-   or crypto application. Haskell has wide range of applications.
-   Also it's cool to find a buddy to work with. Together it's harder to be lazy.
+   Haskell has a fantastic ecosystem. Trying out these tools will help you build confidence and understand what
+   really matters for practical programming—without getting stuck on overly abstract details.
 
-* study lots of code in the public domain 
-   that was written by pros (it's great to start with the `base/prelude` and move
-   to the cool libraries like `servant`, `prettyprinter`, `mtl`) 
+*   Collaborate, contribute, and get advice from pros! This forces you to actually apply your knowledge—and learn
+   how to balance theory with real-world needs.
 
-* collaborate on public projects or on real job. You will get lots of advices from pros and 
-  you will be forced to apply them.
+   But **don’t forget**: if learning is all about reading or chatting online (especially in lists), it can be
+   ineffective. It’s better to start a project yourself—get something cool done that solves a problem, even a small
+   one—and go back to the internet only when you need help. While knowing how to ask questions and discuss ideas with
+   experienced developers on forums like Reddit or chats is valuable, spending too much time there might slow down
+   your progress.
 
-* try to explain stuff to somebody else on forums/reddit/chats
+* Try explaining what you’ve learned (or are trying) to someone else—whether it's in a forum, chat room, or just
+   talking to a friend. Teaching solidifies understanding and gives you confidence.
 
-* meet haskeller in person (can be a rare bird in your city but it's better to try), 
-    go to conferences and hackathons this can expand the horizons.
+*  Meet fellow Haskell enthusiasts! While they may be rare locally, joining local meetups, conferences, or
+   hackathons can open up incredible opportunities—and learning from others broadens your horizons exponentially.
 
-* don't hang out on forums/reddit/telegram/email/lists too much. 
-  It's better to do something and go back to ask
-  when you really need the help. Although you can find a job with those tools
-  they won't make you a better programmer without application to the real code
-  and you can loose lots of time on it and be discouraged by people who seems to know more than you.
-  Don't let it discourage you. Bit by bit in small steps you will become a pro
-  or just invent a couple of cool apps with this great language.
-
-The course is for a novice who already knows what [Monad](https://github.com/anton-k/monads-for-drummers), Applicative or [Typeclassopedia](https://wiki.haskell.org/Typeclassopedia)
-classes are but does not know how to put that knowledge in practice. 
-So I'm not going to explain the basics but try to make it as accessible as I can
-and demystify some advanced or mundane topics.
-
-
+The audience for this course is the **novice** developer who already understands what Monads, Applicatives, and
+Typeclasses are—but hasn't figured out how to use them in real projects. Therefore, I will not explain basics or
+dive into theory-only topics like `Typeclassopedia`. Instead, my goal here is simple: help you put that knowledge
+into practice while keeping things as accessible and clear as possible.
