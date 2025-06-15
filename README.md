@@ -4,24 +4,22 @@
 
 ### Introduction
 
-Welcome to the Haskell in practice series. 
-I have worked in Haskell domain for a while. It was a long time a bit more than a decade. 
-I think there is a gap in learning when people already read the [elephant-book](https://www.amazon.com/Learn-You-Haskell-Great-Good/dp/1593272839) 
+Welcome to **Haskell in Practice** — a series designed for developers who have already dipped their toes into the
+waters of Haskell (perhaps from books like [elephant-book](https://www.amazon.com/Learn-You-Haskell-Great-Good/dp/1593272839) 
 or some other [intermediate course](https://www.goodreads.com/book/show/25587599-haskell-programming-from-first-principles) on Haskell 
-or even the advanced [In depth book](https://www.manning.com/books/haskell-in-depth) but they don't know where to start
-or how to put the knowledge in practice. I hope to help you with that.
+or even the advanced [In depth book](https://www.manning.com/books/haskell-in-depth)).
+Many find that even after reading these resources, they're unsure how to apply their knowledge effectively. This
+course bridges that gap by providing bite-sized projects and practical examples.
 
-The course is a sequence of tiny projects. Each one should run and do something 
-useful or just fun. The learning material is in the readme of the projects.
-Also there you can find the source code. I encourage you also to retype
-the code yourself by readme tutorial to see how it works. Also it's cool to invent new ways 
-or maybe dive deeper in some topics yourself.
+Each project in this series is a sequence of tiny applications — each one runnable and focused on doing something
+useful or fun. The learning material includes the source code for each project, plus detailed explanations in the
+Readme files. I encourage you to retype these tutorials yourself to see how they work (or even better, find your
+own way). My goal is simple: help you realize that building powerful things doesn't require writing massive
+amounts of code.
 
-I hope that you will get the idea that you don't need to type lots of code
-to do something cool in Haskell. As the language is such a powerful beast. 
-Often my real world projects were under 3-4k of code. And it worked. 
-This is a power of functional programming and Haskell. I hope that it will inspire you 
-to build something great, useful or just fun and enjoyable.
+The point here isn’t just typing thousands of lines — my real-world projects often stayed under 4k lines, and yet
+were fully functional. That’s one of the beauties of functional programming in Haskell. I hope this series will
+inspire you to build your own practical applications, useful or fun or both — something that feels rewarding.
 
 ### Table of Projects
 
